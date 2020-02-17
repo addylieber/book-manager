@@ -1,0 +1,51 @@
+<div>
+  <mat-toolbar color="primary">
+    <span><mat-icon>fastfood</mat-icon></span>
+
+    <span>Food List</span>
+
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item>Option 1</button>
+    <button mat-menu-item>Option 2</button>
+  </mat-menu>
+  <mat-card>
+    <mat-card-content>
+      Total Calories: {{getTotalCalories() | number}}
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <!-- <mat-card-title>Example Card</mat-card-title> -->
+    <mat-card-content>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Food Group</th>
+          <th>Calories</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let food of foodList; index as index">
+          <td>{{food.name}}</td>
+          <td>{{food.foodGroup}}</td>
+          <td>{{food.calories | number}}</td>
+          <td class="actions-column">
+            <button mat-icon-button (click)="editFood(food)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteFood(index)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="addFood()">Add</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
