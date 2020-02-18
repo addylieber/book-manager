@@ -9,11 +9,11 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public foodList;
+  public bookList;
 
   constructor(private dialog: MatDialog,
               private snackBar: MatSnackBar) {
-    this.foodList = AppComponent.getFoodList();
+    this.bookList = AppComponent.getFoodList();
   }
 
   addFood() {
@@ -21,11 +21,11 @@ export class AppComponent {
       width: '300px'
     });
 
-    dialogRef.afterClosed().subscribe(food => {
-      if (food) {
-        this.foodList.push(food);
-        AppComponent.saveFoodList(this.foodList);
-        this.snackBar.open(`Added ${food.name}!`, undefined, {
+    dialogRef.afterClosed().subscribe(book => {
+      if (book) {
+        this.bookList.push(book);
+        AppComponent.saveFoodList(this.bookList);
+        this.snackBar.open(`Added ${book.name}!`, undefined, {
           duration: 5000,
           verticalPosition:"top"
         });
@@ -33,17 +33,17 @@ export class AppComponent {
     });
   }
 
-  editFood(food) {
+  editFood(book) {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '300px',
-      data: Object.assign({}, food)
+      data: Object.assign({}, book)
     });
 
-    dialogRef.afterClosed().subscribe(updatedFood => {
-      if (updatedFood) {
-        Object.assign(food,updatedFood);
-        AppComponent.saveFoodList(this.foodList);
-        this.snackBar.open(`Updated ${food.name}!`, undefined, {
+    dialogRef.afterClosed().subscribe(updatedBook => {
+      if (updatedBook) {
+        Object.assign(book,updatedBook);
+        AppComponent.saveFoodList(this.bookList);
+        this.snackBar.open(`Updated ${book.name}!`, undefined, {
           duration: 5000,
           verticalPosition:"top"
         });
@@ -52,9 +52,9 @@ export class AppComponent {
   }
 
   deleteFood(index) {
-    let food = this.foodList.splice(index,1)[0];
-    AppComponent.saveFoodList(this.foodList);
-    this.snackBar.open(`Deleted ${food.name}`, undefined, {
+    let book = this.bookList.splice(index,1)[0];
+    AppComponent.saveFoodList(this.bookList);
+    this.snackBar.open(`Deleted ${book.name}`, undefined, {
           duration: 5000,
           verticalPosition:"top"
         });
@@ -62,9 +62,9 @@ export class AppComponent {
 
   getTotalCalories() {
     let total = 0;
-    this.foodList.forEach(food => {
-      if (food.calories){
-        total = total + food.calories;
+    this.bookList.forEach(book => {
+      if (book.calories){
+        total = total + book.calories;
       }
     });
     return total;
