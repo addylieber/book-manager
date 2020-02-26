@@ -83,20 +83,20 @@ export class AppComponent {
   //  if book has pages
       if (book.calories){
   // add the total to the new or updated books calories
-        total = total + book.calories;
+        total = total + book.pages;
       }
     });
     //give total
     return total;
   }
 
-  // get food list from local storage inside the browser
+  // get book list from local storage inside the browser
   static getFoodList() {
     let foodListString = localStorage.getItem('foodList');
     return foodListString ? JSON.parse(foodListString) : [];
   }
 
-  // save food list in local storage inside the browser
+  // save book list in local storage inside the browser
   static saveFoodList(foodList) {
     localStorage.setItem('foodList', JSON.stringify(foodList));
   }

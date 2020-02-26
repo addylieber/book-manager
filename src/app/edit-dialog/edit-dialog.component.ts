@@ -14,7 +14,7 @@ export class EditDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) 
     public book) {
-      this.title = this.book ? "Edit Your Food" : "Add Your New Food";
+      this.title = this.book ? "Edit Your Book" : "Add Your New Book";
       this.book = this.book || {};
     }
 
