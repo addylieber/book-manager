@@ -30,10 +30,10 @@
         </tr>
         <tr *ngFor="let book of bookList; index as index">
           <td>{{book.name}}</td>
-          <td>{{book.foodGroup}}</td>
-          <td>{{book.calories | number}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.pages | number}}</td>
           <td class="actions-column">
-            <button mat-icon-button (click)="editFood(book)">
+            <button mat-icon-button (click)="editBook(book)">
               <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button (click)="deleteFood(index)">

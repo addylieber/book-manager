@@ -12,7 +12,8 @@ export class EditDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public food) {
+    @Inject(MAT_DIALOG_DATA) 
+    public food) {
       this.title = this.food ? "Edit Your Food" : "Add Your New Food";
       this.food = this.food || {};
     }

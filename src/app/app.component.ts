@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
-@Component({
+@Component({ 
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -39,8 +39,8 @@ export class AppComponent {
     });
   }
 
-  editFood(book) {
-    //open a dialog for editing food 
+  editBook(book) {
+    //open a dialog for editing books 
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '300px',
       data: Object.assign({}, book)
@@ -54,7 +54,7 @@ export class AppComponent {
         Object.assign(book,updatedBook);
 //save my list of books 
         AppComponent.saveFoodList(this.bookList);
-//display a message to the youser that thier book was updated 
+//display a message to the user that thier book was updated 
         this.snackBar.open(`Updated ${book.name}!`, undefined, {
           duration: 5000,
           verticalPosition:"top"
