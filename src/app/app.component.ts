@@ -46,15 +46,15 @@ export class AppComponent {
       data: Object.assign({}, book)
     });
 
-//when the dialog is closed
+    //when the dialog is closed
     dialogRef.afterClosed().subscribe(updatedBook => {
-//if a book is updated
+      //if a book is updated
       if (updatedBook) {
-//make that update to the book
+        //make that update to the book
         Object.assign(book,updatedBook);
-//save my list of books 
+       //save my list of books 
         AppComponent.saveBookList(this.bookList);
-//display a message to the user that thier book was updated 
+        //display a message to the user that thier book was updated 
         this.snackBar.open(`Updated ${book.name}!`, undefined, {
           duration: 5000,
           verticalPosition:"top"
@@ -64,11 +64,11 @@ export class AppComponent {
   }
 
   deleteBook(index) {
-//remove book from list
+    //remove book from list
     let book = this.bookList.splice(index,1)[0];
-//save my updated book list
+    //save my updated book list
     AppComponent.saveBookList(this.bookList);
-//display a message to user that their book was added
+    //display a message to user that their book was deleted
     this.snackBar.open(`Deleted ${book.name}`, undefined, {
           duration: 5000,
           verticalPosition:"top"
@@ -76,13 +76,13 @@ export class AppComponent {
   }
 
   getTotalPages() {
-  // start total at zero
+    // start total at zero
     let total = 0;
-  // for each book
+    // for each book
     this.bookList.forEach(book => {
-  //  if book has pages
+      //  if book has pages
       if (book.pages){
-  // add the total to the new or updated books pages
+        // add the new pages to the other books pages
         total = total + book.pages;
       }
     });

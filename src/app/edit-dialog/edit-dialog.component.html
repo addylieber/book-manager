@@ -1,6 +1,5 @@
 <h1 mat-dialog-title>{{title}}</h1>
-<div mat-dialog-content>
-  <!-- <p>What's your name?</p> -->
+<div mat-dialog-content (keydown.enter)="onOk()">
   <mat-form-field>
     <mat-label>Title</mat-label>
     <input matInput [(ngModel)]="book.name">

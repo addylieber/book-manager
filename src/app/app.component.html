@@ -1,25 +1,15 @@
 <div>
   <mat-toolbar color="primary">
     <span><mat-icon>menu_book</mat-icon></span>
-
     <span>Book Manager</span>
-
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
   </mat-toolbar>
 
-  <mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item>Option 1</button>
-    <button mat-menu-item>Option 2</button>
-  </mat-menu>
   <mat-card>
     <mat-card-content>
       Total Pages: {{getTotalPages() | number}}
     </mat-card-content>
   </mat-card>
   <mat-card>
-    <!-- <mat-card-title>Example Card</mat-card-title> -->
     <mat-card-content>
       <table>
         <tr>
