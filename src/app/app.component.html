@@ -15,7 +15,7 @@
   </mat-menu>
   <mat-card>
     <mat-card-content>
-      Total Pages: {{getTotalCalories() | number}}
+      Total Pages: {{getTotalPages() | number}}
     </mat-card-content>
   </mat-card>
   <mat-card>
@@ -36,7 +36,7 @@
             <button mat-icon-button (click)="editBook(book)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button (click)="deleteFood(index)">
+            <button mat-icon-button (click)="deleteBook(index)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>
@@ -44,7 +44,7 @@
       </table>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="addFood()">Add</button>
+      <button mat-raised-button color="primary" (click)="addBook()">Add</button>
     </mat-card-actions>
   </mat-card>
 

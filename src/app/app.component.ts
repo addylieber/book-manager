@@ -13,11 +13,11 @@ export class AppComponent {
 
   constructor(private dialog: MatDialog,
               private snackBar: MatSnackBar) {
-    this.bookList = AppComponent.getFoodList();
+    this.bookList = AppComponent.getBookList();
   }
 
-  addFood() {
-    // open a dialog for adding a new food
+  addBook() {
+    // open a dialog for adding a new book
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '300px'
     });
@@ -29,7 +29,7 @@ export class AppComponent {
          // add that book to my list of books
         this.bookList.push(book);
         // save my list of books
-        AppComponent.saveFoodList(this.bookList);
+        AppComponent.saveBookList(this.bookList);
          //display a message to the user that their book was added
         this.snackBar.open(`Added ${book.name}!`, undefined, {
           duration: 5000,
@@ -53,7 +53,7 @@ export class AppComponent {
 //make that update to the book
         Object.assign(book,updatedBook);
 //save my list of books 
-        AppComponent.saveFoodList(this.bookList);
+        AppComponent.saveBookList(this.bookList);
 //display a message to the user that thier book was updated 
         this.snackBar.open(`Updated ${book.name}!`, undefined, {
           duration: 5000,
@@ -63,11 +63,11 @@ export class AppComponent {
     }); 
   }
 
-  deleteFood(index) {
+  deleteBook(index) {
 //remove book from list
     let book = this.bookList.splice(index,1)[0];
 //save my updated book list
-    AppComponent.saveFoodList(this.bookList);
+    AppComponent.saveBookList(this.bookList);
 //display a message to user that their book was added
     this.snackBar.open(`Deleted ${book.name}`, undefined, {
           duration: 5000,
@@ -75,14 +75,14 @@ export class AppComponent {
         });
   }
 
-  getTotalCalories() {
+  getTotalPages() {
   // start total at zero
     let total = 0;
   // for each book
     this.bookList.forEach(book => {
   //  if book has pages
-      if (book.calories){
-  // add the total to the new or updated books calories
+      if (book.pages){
+  // add the total to the new or updated books pages
         total = total + book.pages;
       }
     });
@@ -91,20 +91,15 @@ export class AppComponent {
   }
 
   // get book list from local storage inside the browser
-  static getFoodList() {
-    let foodListString = localStorage.getItem('foodList');
-    return foodListString ? JSON.parse(foodListString) : [];
+  static getBookList() {
+    let bookListString = localStorage.getItem('bookList');
+    return bookListString ? JSON.parse(bookListString) : [];
   }
 
   // save book list in local storage inside the browser
-  static saveFoodList(foodList) {
-    localStorage.setItem('foodList', JSON.stringify(foodList));
+  static saveBookList(bookList) {
+    localStorage.setItem('bookList', JSON.stringify(bookList));
   }
 
-  // addFood() {
-   // this.foodList.push({
-  //     name: "spaghetti",
-  //     foodGroup: "grain"
-  //   });
-  // }
+  
 }
