@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import bookData from './book-data';
 
 @Component({ 
   selector: 'app-root',
@@ -14,6 +15,9 @@ export class AppComponent {
   constructor(private dialog: MatDialog,
               private snackBar: MatSnackBar) {
     this.bookList = AppComponent.getBookList();
+    if (this.bookList.length === 0 && window.location.search === '?load') {
+      this.bookList = AppComponent.loadBooksFromApp();
+    }
   }
 
   addBook() {
@@ -101,5 +105,9 @@ export class AppComponent {
     localStorage.setItem('bookList', JSON.stringify(bookList));
   }
 
+  static loadBooksFromApp() {
+    AppComponent.saveBookList(bookData);
+    return bookData;
+  }
   
 }
