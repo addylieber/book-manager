@@ -82,7 +82,7 @@ export class AppComponent {
     this.bookList.forEach(book => {
       //  if book has pages
       if (book.pages){
-        // add the new pages to the other books pages
+        // add the books pages to the total
         total = total + book.pages;
       }
     });
